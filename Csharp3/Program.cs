@@ -9,23 +9,23 @@ namespace Csharp3
         //static double numberTwo = 12.34;
         static void Main(string[] args)
         {
-            double[] numbers = new double[] { 1, 2, 3, 42, 42154 };
-            var result = SimpleMath.Add(numbers);
-            Console.WriteLine(result);
-
             //object instance ctor
-            BankAccount bankAccount = new BankAccount();
-            bankAccount.AddToBalance(200);
-            Console.WriteLine(bankAccount.Balance);
+            BankAccount bankAccount = new BankAccount(1000);
+            bankAccount.AddToBalance(100);
 
-            //callee child inherit ctor
-            ChildBankAccount childBankAccount = new ChildBankAccount();
-            childBankAccount.AddToBalance(100);
-            Console.WriteLine(childBankAccount.Balance);
+            SimpleMath simpleMath = new SimpleMath();
+
+            //using interfaces to call class
+            Console.WriteLine(Information(bankAccount));
 
 
 
             Console.ReadLine();
+        }
+
+        private static string Information(IInformation information)
+        {
+            return information.GetInformation();
         }
     }
 
